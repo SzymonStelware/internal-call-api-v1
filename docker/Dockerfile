@@ -8,4 +8,4 @@ RUN apt-get update && \
 
 RUN pip3 install flask requests
 
-CMD ["python", "internal-call-api-v1.py"]
+CMD ["python", "api/internal-call-api-v1.py"]
