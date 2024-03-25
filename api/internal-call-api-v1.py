@@ -3,14 +3,21 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route('/api/response', methods=['GET'])
-
-def get_data():
+@app.route('/check-status', methods=['GET'])
+def check_status():
     url = "https://malydevops.pl"
     
-    response = requests.get(url)
-    response_json = response.json()
-    return jsonify(print(response_json))
-    #return jsonify(response)
+    try:
+        response = requests.get(url)
+        return jsonify({"url": url, "status_code": response.status_code})
+    except requests.exceptions.RequestException as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/data', methods=['GET'])
+def api_data():
+    data = {"name": "Szymek", "age": 28}
+    return jsonify(data)
+
 if __name__ == '__main__':
     app.run(debug=True, port=1234)
