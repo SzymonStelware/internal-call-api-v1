@@ -1,11 +1,23 @@
-from flask import Flask, jsonify
+import requests
+requests.path.append('/Library/Frameworks/Python.framework/Versions/3.11/lib/python3.11/site-packages/requests')
 
-app = Flask(__name__)
+#from flask import Flask, jsonify
 
-@app.route('/api/data', methods=['GET'])
-def get_data():
-    data = {"name": "Szymek", "age": "28"}
-    return jsonify(data)
+#app = Flask(__name__)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+#@app.route('/api/response', methods=['GET'])
+
+#def get_data():
+   # url = "https://malydevops.pl"
+    
+   # response = requests.get(url)
+   # response_json = response.json()
+   # print(response_json)
+    #return jsonify(response_json)
+
+#if __name__ == '__main__':
+ #   app.run(debug=True)
+
+url = "https://malydevops.pl"
+response = requests.get(url)
+print(response.status_code)
