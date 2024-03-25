@@ -1,4 +1,5 @@
 FROM python:3.8
+EXPOSE 1234
 
 WORKDIR /app
 
