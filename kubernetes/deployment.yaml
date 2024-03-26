@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my_api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my_api
+  template:
+    metadata:
+      labels:
+        app: my_api
+    spec:
+      containers:
+      - name: my_api
+        image: salmedd55/internal-call-api-v1:my_api
+        ports:
+        - containerPort: 80
