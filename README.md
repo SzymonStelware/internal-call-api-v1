@@ -17,3 +17,14 @@ How to run internal-call-api-v1.py
 
 1. install miniKube
 2. run deployment.yaml -> kubectl apply -f deployment.yaml
+
+
+#SQLite installation
+For MacOs
+--- download sqlite-autoconf-*.tar.gz from https://www.sqlite.org/download.html ---
+$tar xvfz sqlite-autoconf-3071502.tar.gz
+$cd sqlite-autoconf-3071502
+$./configure --prefix=/usr/local
+$make
+$make install
+$sqlite3 MyDB.db

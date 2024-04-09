@@ -1,5 +1,7 @@
 import requests
 from flask import Flask, jsonify
+import sqlite3
+import json
 
 app = Flask(__name__)
 
@@ -18,6 +20,19 @@ def check_status():
 def api_data():
     data = {"name": "Szymek", "age": 28}
     return jsonify(data)
+
+@app.route('/db/select', methods=['GET'])
+def db_select():
+    connection = sqlite3.connect('/Users/szymonstelmaszak/Desktop/MyDB.db')
+    query = connection.cursor()
+
+    query.execute('Select * from EMPLOYEES')
+
+    output = query.fetchall()
+    for row in output:
+        return jsonify(output)
+    
+    connection.close()
 
 if __name__ == '__main__':
     app.run(debug=True, port=1234)
